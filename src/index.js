@@ -1,104 +1,37 @@
 import "./styles/index.css";
-import "./images/yoda-stitch.jpg";
-import canvasExample from "./scripts/canvas";
-import Square from "./scripts/square";
-import { DOMExample } from "./scripts/DOMExample";
-const currentStateObj = {
-  currentExample: null,
-  currentEventListeners: [],
-};
+import { fetchAzaveaData } from "./scripts/fetch_util";
 
-document.querySelector("#canvas-demo").addEventListener("click", startCanvas);
-document.querySelector("#DOM-demo").addEventListener("click", startDOM);
 
-function startDOM() {
-  unregisterEventListeners();
-  clearDemo();
-  currentStateObj.currentExample = "DOMDEMO";
-  DOMExample();
-}
+console.log(keys.azaveaAPI);
 
-function startCanvas() {
-  clearDemo();
-  unregisterEventListeners();
-  currentStateObj.currentExample = "CANVASDEMO";
-  const canvas = new canvasExample();
-  canvas.createCanvas();
-  const squares = [new Square(canvas.ctx, canvas.coords, canvas.fillColor)];
+document
+  .getElementById('r85-btn')
+  .addEventListener('click', () => r85data(1, 'average_high_temperature'));
 
-  let animating = true;
+document
+  .getElementById('hist-btn')
+  .addEventListener('click', () => histData(1, 'average_high_temperature'));
 
-  const animation = () => {
-    canvas.clearCanvas();
-    if (animating) squares.forEach((sq) => sq.updateSquare(canvas.fillColor));
-    squares.forEach((sq) => sq.drawSquare());
-    window.requestAnimationFrame(animation);
-    squares.forEach((sq) => {
-      if (sq.coords[0] + sq.coords[2] > window.innerWidth)
-        sq.reverseAnimation();
-      if (sq.coords[0] < 0) sq.reverseAnimation();
-    });
-  };
 
-  window.requestAnimationFrame(animation);
+const city = document.getElementById('city');
 
-  window.addEventListener("keydown", handleKeyDown);
-  currentStateObj.currentEventListeners.push([
-    "window",
-    "keydown",
-    handleKeyDown,
-  ]);
 
-  window.addEventListener("mousedown", handleMouseDown);
-  currentStateObj.currentEventListeners.push([
-    "window",
-    "mousedown",
-    handleMouseDown,
-  ]);
+// city.addEventListener('change', () => histData(city.value, 'average_high_temperature'));
 
-  function handleKeyDown(event) {
-    if (event.which === 32) {
-      event.preventDefault();
-      squares.forEach((sq) => sq.reverseAnimation());
-      canvas.setColor(`#${Math.floor(Math.random() * 16777215).toString(16)}`);
-    }
+
+
+const form = document.getElementById('form');
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const data = new FormData(e.target);
+  const obj = {};
+  for (let key of data.keys()) {
+    obj[key] = data.get(key);
   }
-
-  function handleMouseDown(event) {
-    event.preventDefault();
-    squares.push(
-      new Square(
-        canvas.ctx,
-        canvas.coords.map((co) => co + 25),
-        canvas.fillColor
-      )
-    );
-    // animating = !animating;
-  }
-}
-
-function unregisterEventListeners() {
-  while (currentStateObj.currentEventListeners.length) {
-    let [
-      selector,
-      event,
-      handler,
-    ] = currentStateObj.currentEventListeners.pop();
-    if (selector === "window") {
-      window.removeEventListener(event, handler);
-      console.log(handler);
-    } else {
-      document.querySelector(selector).removeEventListener(event, handler);
-    }
-  }
-}
-
-function clearDemo() {
-  if (currentStateObj.currentExample === "CANVASDEMO")
-    document.body.removeChild(document.querySelector("canvas"));
-  if (currentStateObj.currentExample === "DOMDEMO") {
-    [...document.querySelectorAll(".card")].forEach((elem) =>
-      document.body.removeChild(elem)
-    );
-  }
-}
+  const { city, scenario, indicator } = obj;
+  console.log(city);
+  console.log(scenario);
+  console.log(indicator);
+  fetchAzaveaData(city, scenario, indicator);
+});

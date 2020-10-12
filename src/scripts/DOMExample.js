@@ -1,4 +1,4 @@
-import stitchAndYoda from "../images/yoda-stitch.jpg";
+
 export const DOMExample = () => {
   const testObj = {
     key1: "hi",
