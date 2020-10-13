@@ -1,6 +1,6 @@
 import "./styles/index.css";
 import { fetchAzaveaData } from "./scripts/fetch_util";
-import { chart } from './scripts/chart';
+import Chart from './scripts/chart';
 import * as d3 from "d3";
 
 const form = document.getElementById('form');
@@ -22,6 +22,7 @@ form.addEventListener('submit', e => {
       });
       console.log(formattedData);
       console.log(d3.max(formattedData.map(d => d.avg)));
+      const chart = new Chart(formattedData);
     });
 });
 

@@ -5,3 +5,12 @@
   height: 100px;
   justify-content: space-around;
 }
+
+.line {
+    fill: none;
+    stroke-width: 2px;
+}
+.axis path, .tick line {
+    fill: none;
+    stroke: #333;
+}
