@@ -63,9 +63,11 @@ export default class Chart {
 
   createScales() {
     const map = this.data.map(d => d.avg);
+    const max = d3.max(map);
+    const min = d3.min(map);
     const margin = this.margin;
     const xExtent = [1950, 2100];
-    const yExtent = [d3.min(map) - 5, d3.max(map)];
+    const yExtent = [min - min/20, max + max/20];
     if (yExtent[0] < 0) yExtent[0] = 0;
     this.xScale = d3.scaleLinear()
       .range([0, this.width - margin.right])
@@ -95,15 +97,27 @@ export default class Chart {
   addLine() {
     let map = this.data.map(d => d.avg);
     if (map < 0) map = 0;
-    const area = d3.area()
+    // const iArea = d3.area()
+    //   .x(0)
+    //   .y1(d => this.yScale(d.avg))
+      // .y0(this.yScale(d3.min(map) - 5 < 0 ? 0 : d3.min(map) - 5));
+    const fArea = d3.area()
       .x(d => this.xScale(d.year))
-      .y1(d => this.yScale(d.avg))
-      .y0(this.yScale(d3.min(map) - 5 < 0 ? 0 : d3.min(map) - 5));
-    this.plot.append('path')
+      .y(d => this.yScale(d.avg));
+      // .y0(this.yScale(d3.min(map) - 5 < 0 ? 0 : d3.min(map) - 5));
+    const path = this.plot.append('path')
       .datum(this.data)
       .classed('line', true)
-      .attr('d', area)
-      .attr('stroke', 'green');
+      .attr('fill', 'green')
+      .attr('stroke', 'green')
+      .attr('d', fArea)
+      .transition()
+      .duration(7000)
+      .ease(d3.easeLinear)
+      .attrTween("stroke-dasharray", () => {
+        const length = path.node().getTotalLength();
+        return d3.interpolate(`0,${length}`, `${length},${length}`);
+      });
   }
 
 }

@@ -33,4 +33,4 @@ form.addEventListener('submit', e => {
 });
 
 
-console.log(d3);
+// console.log(d3);

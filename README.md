@@ -14,7 +14,6 @@ Climate is a climate change data visualization dashboard that allows users to ch
 * Javascript
 * Webpack
 * D3
-* SCSS
 * Azavea Climate API
 * IQAir AirVisual API
 
