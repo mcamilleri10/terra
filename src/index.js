@@ -1,37 +1,29 @@
 import "./styles/index.css";
 import { fetchAzaveaData } from "./scripts/fetch_util";
-
-
-console.log(keys.azaveaAPI);
-
-document
-  .getElementById('r85-btn')
-  .addEventListener('click', () => r85data(1, 'average_high_temperature'));
-
-document
-  .getElementById('hist-btn')
-  .addEventListener('click', () => histData(1, 'average_high_temperature'));
-
-
-const city = document.getElementById('city');
-
-
-// city.addEventListener('change', () => histData(city.value, 'average_high_temperature'));
-
-
+import { chart } from './scripts/chart';
+import * as d3 from "d3";
 
 const form = document.getElementById('form');
-
+let res;
+let formattedData = [];
 form.addEventListener('submit', e => {
   e.preventDefault();
+  formattedData = [];
   const data = new FormData(e.target);
   const obj = {};
   for (let key of data.keys()) {
     obj[key] = data.get(key);
   }
   const { city, scenario, indicator } = obj;
-  console.log(city);
-  console.log(scenario);
-  console.log(indicator);
-  fetchAzaveaData(city, scenario, indicator);
+  res = fetchAzaveaData(city, scenario, indicator)
+    .then(res => {
+      Object.keys(res).forEach(key => {
+        formattedData.push(Object.assign({}, {'year': key}, res[key]));
+      });
+      console.log(formattedData);
+      console.log(d3.max(formattedData.map(d => d.avg)));
+    });
 });
+
+
+console.log(d3);
