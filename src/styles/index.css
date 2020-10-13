@@ -7,7 +7,7 @@
 }
 
 .line {
-    fill: none;
+    fill: green;
     stroke-width: 2px;
 }
 .axis path, .tick line {

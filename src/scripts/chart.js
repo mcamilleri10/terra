@@ -62,9 +62,11 @@ export default class Chart {
   }
 
   createScales() {
+    const map = this.data.map(d => d.avg);
     const margin = this.margin;
     const xExtent = [1950, 2100];
-    const yExtent = [0, d3.max(this.data.map(d => d.avg))];
+    const yExtent = [d3.min(map) - 5, d3.max(map)];
+    if (yExtent[0] < 0) yExtent[0] = 0;
     this.xScale = d3.scaleLinear()
       .range([0, this.width - margin.right])
       .domain(xExtent);
@@ -81,8 +83,6 @@ export default class Chart {
       .tickFormat(d3.format('d'));
     const yAxis = d3.axisLeft()
       .scale(this.yScale);
-      // .ticks(d3.max(this.data.map(d => d.avg)));
-      // .tickFormat(d3.format("d"));
     this.plot.append('g')
       .attr('class', 'x axis')
       .attr('transform', `translate(0, ${this.height - (margin.top + margin.bottom)})`)
@@ -93,14 +93,17 @@ export default class Chart {
   }
 
   addLine() {
-    const line = d3.line()
+    let map = this.data.map(d => d.avg);
+    if (map < 0) map = 0;
+    const area = d3.area()
       .x(d => this.xScale(d.year))
-      .y(d => this.yScale(d.avg));
+      .y1(d => this.yScale(d.avg))
+      .y0(this.yScale(d3.min(map) - 5 < 0 ? 0 : d3.min(map) - 5));
     this.plot.append('path')
       .datum(this.data)
       .classed('line', true)
-      .attr('d', line)
-      .style('stroke', 'blue');
+      .attr('d', area)
+      .attr('stroke', 'green');
   }
 
 }

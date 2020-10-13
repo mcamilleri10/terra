@@ -1,5 +1,5 @@
 import "./styles/index.css";
-import { fetchAzaveaData } from "./scripts/fetch_util";
+import { fetchAzaveaData, fetchHistAzaveaData } from "./scripts/fetch_util";
 import Chart from './scripts/chart';
 import * as d3 from "d3";
 
@@ -15,14 +15,20 @@ form.addEventListener('submit', e => {
     obj[key] = data.get(key);
   }
   const { city, scenario, indicator } = obj;
-  res = fetchAzaveaData(city, scenario, indicator)
+  fetchHistAzaveaData(city, indicator)
     .then(res => {
       Object.keys(res).forEach(key => {
-        formattedData.push(Object.assign({}, {'year': key}, res[key]));
+        formattedData.push(Object.assign({}, { 'year': key }, res[key]));
       });
-      console.log(formattedData);
-      console.log(d3.max(formattedData.map(d => d.avg)));
-      const chart = new Chart(formattedData);
+      fetchAzaveaData(city, scenario, indicator)
+        .then(res => {
+          Object.keys(res).forEach(key => {
+            formattedData.push(Object.assign({}, {'year': key}, res[key]));
+          });
+          console.log(formattedData);
+          console.log(d3.max(formattedData.map(d => d.avg)));
+          const chart = new Chart(formattedData);
+        });
     });
 });
 
