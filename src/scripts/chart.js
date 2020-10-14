@@ -46,7 +46,7 @@ export default class Chart {
   createChart() {
     this.width = 650;
     this.height = 450;
-    this.margin = {top: 50, right: 75, bottom: 50, left: 25};
+    this.margin = {top: 50, right: 75, bottom: 50, left: 30};
 
     this.element.innerHTML = '';
     const svg = d3.select(this.element)
@@ -59,8 +59,8 @@ export default class Chart {
 
     this.createScales();
     this.addAxes();
-    this.addHighLine();
-    this.addLowLine();
+    this.addLine(this.highData, 'red'); // SET TIMEOUT 5s?
+    this.addLine(this.lowData, 'rgb(0, 0, 99)');
   }
 
   createScales() {
@@ -98,38 +98,17 @@ export default class Chart {
       .call(yAxis);
   }
 
-  addLowLine() {
-    let avg = this.lowData.map(d => d.avg);
+  addLine(data, color) {
+    let avg = data.map(d => d.avg);
     if (avg < 0) avg = 0;
     const line = d3.line()
       .x(d => this.xScale(d.year))
       .y(d => this.yScale(d.avg));
     const path = this.plot.append('path')
-      .datum(this.lowData)
+      .datum(data)
       .classed('line', true)
       .attr('fill', 'none')
-      .attr('stroke', 'green')
-      .attr('d', line)
-      .transition()
-      .duration(5000)
-      .ease(d3.easeLinear)
-      .attrTween("stroke-dasharray", () => {
-        const length = path.node().getTotalLength();
-        return d3.interpolate(`0,${length}`, `${length},${length}`);
-      });
-  }
-
-  addHighLine() {
-    let avg = this.highData.map(d => d.avg);
-    if (avg < 0) avg = 0;
-    const line = d3.line()
-      .x(d => this.xScale(d.year))
-      .y(d => this.yScale(d.avg));
-    const path = this.plot.append('path')
-      .datum(this.highData)
-      .classed('line', true)
-      .attr('fill', 'none')
-      .attr('stroke', 'red')
+      .attr('stroke', color)
       .attr('d', line)
       .transition()
       .duration(5000)

@@ -4,10 +4,9 @@ import Chart from './scripts/chart';
 import * as d3 from "d3";
 
 
-// new Chart([]);
+new Chart([], []);
 
 const form = document.querySelector('.form');
-// let res;
 let formatted45Data = [];
 let formatted85Data = [];
 form.addEventListener('submit', e => {
@@ -19,7 +18,7 @@ form.addEventListener('submit', e => {
   for (let key of data.keys()) {
     obj[key] = data.get(key);
   }
-  const { city, scenario, indicator } = obj;
+  const { city, indicator } = obj;
   fetchHistAzaveaData(city, indicator)
     .then(res => {
       Object.keys(res).forEach(key => {
@@ -40,12 +39,9 @@ form.addEventListener('submit', e => {
               });
               console.log(formatted85Data);
               console.log(d3.max(formatted85Data.map(d => d.avg)));
-              new Chart(formatted45Data, formatted85Data);
               console.log('done');
+              new Chart(formatted45Data, formatted85Data);
             });
           });
         });
 });
-
-
-// console.log(d3);
