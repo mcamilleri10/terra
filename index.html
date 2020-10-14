@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <!-- <link rel="stylesheet" href="./dist/main.css" /> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/solid.css"
+      integrity="sha384-yo370P8tRI3EbMVcDU+ziwsS/s62yNv3tgdMqDSsRSILohhnOrDNl142Df8wuHA+" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/brands.css"
       integrity="sha384-/feuykTegPRR7MxelAQ+2VUMibQwKyO6okSsWiblZAJhUSTF9QAVR0QLk6YwNURa" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/fontawesome.css"
@@ -20,14 +22,15 @@
     <header class='header'>
       <div class='header-content'>
         <div class='title'>
-          <h1>Climate</h1>
+          <i class="fas fa-globe-americas"></i>
+          <h1>Climate Change</h1>
         </div>
         <div class='personal-links'>
-          <a href="https://github.com/troubadour10">
+          <a href='https://github.com/troubadour10'>
             <i class="fab fa-github-square"></i>
             <span>Github</span>
           </a>
-          <a href="https://www.linkedin.com/in/mark-camilleri-0414b4152/">
+          <a href='https://www.linkedin.com/in/mark-camilleri-0414b4152/'>
             <i class="fab fa-linkedin"></i>
             <span>LinkedIn</span>
           </a>
@@ -38,31 +41,35 @@
     <div class='main-container'>
       <section class='main'>
         <div class='main-left'>
-          <form class="form">
-            <select name="city" id="city" class='select'>
-              <option value="71">Anchorage, AK</option>
-              <option value="3">Chicago, IL</option>
-              <option value="16">Los Angeles, CA</option>
-              <option value="50">Miami, FL</option>
-              <option value="59">New Orleans, LA</option>
-              <option value="1" selected>New York City, NY</option>
-              <option value="17">San Francisco, CA</option>
+          <form class='form'>
+            <h4>National Climate Indicators</h4>
+            <select name='city' id='city' class='select'>
+              <option selected disabled>Please select a city</option>
+              <option value='71'>Anchorage, AK</option>
+              <option value='3'>Chicago, IL</option>
+              <option value='16'>Los Angeles, CA</option>
+              <option value='50'>Miami, FL</option>
+              <option value='59'>New Orleans, LA</option>
+              <option value='1'>New York City, NY</option>
+              <option value='17'>San Francisco, CA</option>
             </select>
-            <select name="indicator" id="indicator" class='select'>
-              <option value="average_high_temperature">Avg High Temps</option>
-              <option value="average_low_temperature">Avg Low Temps</option>
-              <option value="total_precipitation">Total Precipitation</option>
-              <option value="extreme_precipitation_events">Extreme Precipitation Events</option>
-              <option value="extreme_cold_events">Extreme Cold Events</option>
-              <option value="extreme_heat_events">Extreme Heat Events</option>
-              <option value="heat_wave_incidents">Heat Wave Incidents</option>
-              <option value="dry_spells">Dry Spells</option>
+            <select name='indicator' id='indicator' class='select'>
+              <option selected disabled>Please select an indicator</option>
+              <option value='average_high_temperature'>Avg High Temps</option>
+              <option value='average_low_temperature'>Avg Low Temps</option>
+              <option value='total_precipitation'>Total Precipitation</option>
+              <option value='extreme_precipitation_events'>Extreme Precipitation Events</option>
+              <option value='extreme_cold_events'>Extreme Cold Events</option>
+              <option value='extreme_heat_events'>Extreme Heat Events</option>
+              <option value='heat_wave_incidents'>Heat Wave Incidents</option>
+              <option value='heat_wave_duration_index'>Heat Wave Duration Index</option>
+              <option value='dry_spells'>Dry Spells</option>
             </select>
-            <input type="submit" value="Submit">
+            <input type='submit' value='Submit' id='submit'>
           </form>
           <div class='indicator-info-container'>
             <p class='indicator-info'>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat quaerat nobis iste veritatis libero eos itaque doloribus aperiam. Dolorum, saepe! Nulla quod illum atque amet sunt voluptatum possimus modi velit!
+              Please select a city and indicator to view a description and chart showing low and high emissions models until the year 2100.
             </p>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import "./styles/index.css";
 import { fetchAzaveaData, fetchHistAzaveaData } from "./scripts/fetch_util";
+import { changeIndicatorInfoText, indicatorError } from './scripts/indicator_info';
 import Chart from './scripts/chart';
 import * as d3 from "d3";
 
@@ -7,6 +8,7 @@ import * as d3 from "d3";
 new Chart([], []);
 
 const form = document.querySelector('.form');
+const submit = document.querySelector('#submit');
 let formatted45Data = [];
 let formatted85Data = [];
 form.addEventListener('submit', e => {
@@ -19,6 +21,8 @@ form.addEventListener('submit', e => {
     obj[key] = data.get(key);
   }
   const { city, indicator } = obj;
+  changeIndicatorInfoText('loading');
+  submit.disabled = true;
   fetchHistAzaveaData(city, indicator)
     .then(res => {
       Object.keys(res).forEach(key => {
@@ -41,7 +45,9 @@ form.addEventListener('submit', e => {
               console.log(d3.max(formatted85Data.map(d => d.avg)));
               console.log('done');
               new Chart(formatted45Data, formatted85Data);
+              changeIndicatorInfoText(indicator);
+              setTimeout(() => submit.disabled = false, 5000);
             });
-          });
         });
+    });
 });
