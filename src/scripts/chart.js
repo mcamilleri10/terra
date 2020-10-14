@@ -36,8 +36,9 @@ import * as d3 from "d3";
 
 export default class Chart {
 
-  constructor(data) {
-    this.data = data;
+  constructor(lowData, highData) {
+    this.lowData = lowData;
+    this.highData = highData;
     this.element = document.getElementById('chart-container');
     this.createChart();
   }
@@ -58,11 +59,14 @@ export default class Chart {
 
     this.createScales();
     this.addAxes();
-    this.addLine();
+    this.addHighLine();
+    this.addLowLine();
   }
 
   createScales() {
-    const map = this.data.map(d => d.avg);
+    const lowMap = this.lowData.map(d => d.avg);
+    const highMap = this.highData.map(d => d.avg);
+    const map = lowMap.concat(highMap);
     const max = d3.max(map);
     const min = d3.min(map);
     const margin = this.margin;
@@ -94,25 +98,41 @@ export default class Chart {
       .call(yAxis);
   }
 
-  addLine() {
-    let map = this.data.map(d => d.avg);
-    if (map < 0) map = 0;
-    // const iArea = d3.area()
-    //   .x(0)
-    //   .y1(d => this.yScale(d.avg))
-      // .y0(this.yScale(d3.min(map) - 5 < 0 ? 0 : d3.min(map) - 5));
-    const fArea = d3.area()
+  addLowLine() {
+    let avg = this.lowData.map(d => d.avg);
+    if (avg < 0) avg = 0;
+    const line = d3.line()
       .x(d => this.xScale(d.year))
       .y(d => this.yScale(d.avg));
-      // .y0(this.yScale(d3.min(map) - 5 < 0 ? 0 : d3.min(map) - 5));
     const path = this.plot.append('path')
-      .datum(this.data)
+      .datum(this.lowData)
       .classed('line', true)
-      .attr('fill', 'green')
+      .attr('fill', 'none')
       .attr('stroke', 'green')
-      .attr('d', fArea)
+      .attr('d', line)
       .transition()
-      .duration(7000)
+      .duration(5000)
+      .ease(d3.easeLinear)
+      .attrTween("stroke-dasharray", () => {
+        const length = path.node().getTotalLength();
+        return d3.interpolate(`0,${length}`, `${length},${length}`);
+      });
+  }
+
+  addHighLine() {
+    let avg = this.highData.map(d => d.avg);
+    if (avg < 0) avg = 0;
+    const line = d3.line()
+      .x(d => this.xScale(d.year))
+      .y(d => this.yScale(d.avg));
+    const path = this.plot.append('path')
+      .datum(this.highData)
+      .classed('line', true)
+      .attr('fill', 'none')
+      .attr('stroke', 'red')
+      .attr('d', line)
+      .transition()
+      .duration(5000)
       .ease(d3.easeLinear)
       .attrTween("stroke-dasharray", () => {
         const length = path.node().getTotalLength();
