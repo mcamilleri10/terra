@@ -18,3 +18,4 @@ export const fetchAzaveaData = (city, scenario, indicator) => {
     .then(res => res.json())
     .then(res => res.data);
 };
+

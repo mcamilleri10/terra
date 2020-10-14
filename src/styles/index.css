@@ -1,7 +1,33 @@
-#form {
+.main-container {
   display: flex;
   flex-direction: column;
-  width: 300px;
+  width: 80vh;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  height: 80px;
+  line-height: 80px;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+.main {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
   height: 100px;
   justify-content: space-around;
 }
@@ -10,7 +36,15 @@
     /* fill: green; */
     stroke-width: 3px;
 }
+
 .axis path, .tick line {
     fill: none;
     stroke: #333;
+}
+
+#chart-container {
+  border: 2px solid black;
+  height: 450px;
+  width: 650px;
+  padding-left: 10px;
 }

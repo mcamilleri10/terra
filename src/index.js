@@ -3,8 +3,11 @@ import { fetchAzaveaData, fetchHistAzaveaData } from "./scripts/fetch_util";
 import Chart from './scripts/chart';
 import * as d3 from "d3";
 
-const form = document.getElementById('form');
-let res;
+
+new Chart([]);
+
+const form = document.querySelector('.form');
+// let res;
 let formattedData = [];
 form.addEventListener('submit', e => {
   e.preventDefault();
