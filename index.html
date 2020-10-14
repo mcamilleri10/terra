@@ -39,6 +39,7 @@
     </header>
 
     <div class='main-container'>
+      <h2>A Visualization of Past and Future Climate Data</h2>
       <section class='main'>
         <div class='main-left'>
           <form class='form'>
@@ -57,13 +58,17 @@
               <option selected disabled>Please select an indicator</option>
               <option value='average_high_temperature'>Avg High Temps</option>
               <option value='average_low_temperature'>Avg Low Temps</option>
-              <option value='total_precipitation'>Total Precipitation</option>
-              <option value='extreme_precipitation_events'>Extreme Precipitation Events</option>
+              <option value='diurnal_temperature_range'>Diurnal Temperature Range</option>
+              <option value='dry_spells'>Dry Spells</option>
               <option value='extreme_cold_events'>Extreme Cold Events</option>
               <option value='extreme_heat_events'>Extreme Heat Events</option>
-              <option value='heat_wave_incidents'>Heat Wave Incidents</option>
+              <option value='extreme_precipitation_events'>Extreme Precipitation Events</option>
+              <option value='frost_days'>Frost Days</option>
               <option value='heat_wave_duration_index'>Heat Wave Duration Index</option>
-              <option value='dry_spells'>Dry Spells</option>
+              <option value='heat_wave_incidents'>Heat Wave Incidents</option>
+              <!-- <option value='max_high_temperature'>Max High Temperature</option> -->
+              <!-- <option value='min_low_temperature'>Min Low Temperature</option> -->
+              <option value='total_precipitation'>Total Precipitation</option>
             </select>
             <input type='submit' value='Submit' id='submit'>
           </form>
@@ -75,6 +80,8 @@
         </div>
         <div class='main-right'>
           <div id='chart-container'></div>
+          <p>The <span class='blue'>blue line </span>represents a low emissions scenario - what will happen if emissions are significantly reduced.</p>
+          <p>The <span class='red'>red line </span>represents a high emissions scenario - what will happen if society continues on the 'business as usual' path.</p>
         </div>
       </section>
       <section class='info'>

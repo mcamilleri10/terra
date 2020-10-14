@@ -57,7 +57,16 @@ body {
 .main {
   display: flex;
   justify-content: space-between;
-  margin-top: 50px;
+  margin-top: 25px;
+}
+
+.main-container h2 {
+  margin: 25px auto 0 auto;
+  font-weight: 500;
+}
+
+.main-right {
+  width: 650px;
 }
 
 .indicator-info-container {
@@ -77,7 +86,7 @@ body {
   margin: 0 auto;
   margin-bottom: 5px;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .form input, #city, #indicator {
@@ -115,6 +124,11 @@ body {
   cursor: default;
 }
 
+.fa-spinner {
+  margin-left: 116px;
+  color: rgb(0, 0, 99);
+}
+
 .line {
     /* fill: green; */
     stroke-width: 2px;
@@ -137,4 +151,8 @@ body {
 
 .red {
   color: red;
+}
+
+.blue {
+  color: rgb(0, 0, 99);
 }

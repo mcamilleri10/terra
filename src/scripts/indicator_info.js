@@ -4,7 +4,8 @@ export const changeIndicatorInfoText = indicator => {
   p.innerHTML = '';
   switch (indicator) {
     case 'loading':
-      p.innerHTML = 'Loading...';
+      // p.innerHTML = 'Loading...';
+      p.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
       break;
     case 'average_high_temperature':
       p.innerHTML = 'Average High Temperature is calculated by aggregating daily average high   temperatures. It is an appropriate metric for probable long term temperature trends.';
@@ -32,6 +33,18 @@ export const changeIndicatorInfoText = indicator => {
       break;
     case 'dry_spells':
       p.innerHTML = 'Dry Spells counts the total number of times per user-specified period that there are 5 or more consecutive days without precipitation. This indicator is useful to understand future drought patterns and inform resource planners of changes to prepare for.';
+      break;
+    case 'diurnal_temperature_range':
+      p.innerHTML = 'Diurnal Temperature Range (DTR) is the average difference between the maximum temperature and minimum temperature in a day. It measures how much it heats or cools in a day. A decreasing DTR suggests a warming climatic trend but is only a rough measure as DTR can be skewed by many factors such as cloud cover, urban heat island effect, and aerosols.';
+      break;
+    case 'frost_days':
+      p.innerHTML = 'Frost Days reports the number of days where the daily low temperature drops below 32˚F or 0˚C. The presence of, lack of, and schedule of frost days have strong impacts on growing seasons, permafrost, and heating demands, for example. While the freezing point of water varies slightly with local environmental conditions, for simplicity this indicator assumes a consistent 32˚F/0˚C.';
+      break;
+    case 'max_high_temperature':
+      p.innerHTML = 'Max High Temperature reports the highest daily temperature generated across all requested models for the given period. While averages or percentiles may be more dependable measurements of regular climatic conditions, gauging potentially new maximum heat extremes is essential for proper emergency services preparation.';
+      break;
+    case 'min_low_temperature':
+      p.innerHTML = 'Min Low Temperature reports the lowest daily temperature generated across all requested models for the given period. While averages or percentiles may be more dependable measurements of regular climatic conditions, gauging potentially new minimum temperature extremes is essential for gauging the changing climate.';
       break;
     default:
       p.innerHTML = '';

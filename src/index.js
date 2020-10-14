@@ -11,6 +11,7 @@ const form = document.querySelector('.form');
 const submit = document.querySelector('#submit');
 let formatted45Data = [];
 let formatted85Data = [];
+
 form.addEventListener('submit', e => {
   e.preventDefault();
   formatted45Data = [];
