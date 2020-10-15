@@ -53,7 +53,7 @@ const fetchAndFormatData = (city, indicator) => {
               // console.log(formatted85Data);
               // console.log(d3.max(formatted85Data.map(d => d.avg)));
               // console.log('done');
-              new Chart(formatted45Data, formatted85Data);
+              new Chart(formatted45Data, formatted85Data, indicator);
               changeIndicatorInfoText(indicator);
               setTimeout(() => submit.disabled = false, 5000);
             });

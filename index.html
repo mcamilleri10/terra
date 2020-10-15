@@ -22,17 +22,17 @@
     <header class='header'>
       <div class='header-content'>
         <div class='title'>
-          <i class="fas fa-globe-americas"></i>
+          <!-- <i class="fas fa-globe-americas"></i> -->
           <h1>Climate Change</h1>
         </div>
         <div class='personal-links'>
           <a href='https://github.com/troubadour10'>
             <i class="fab fa-github-square"></i>
-            <span>Github</span>
+            <!-- <span>Github</span> -->
           </a>
           <a href='https://www.linkedin.com/in/mark-camilleri-0414b4152/'>
             <i class="fab fa-linkedin"></i>
-            <span>LinkedIn</span>
+            <!-- <span>LinkedIn</span> -->
           </a>
         </div>
       </div>
@@ -46,13 +46,26 @@
             <h4>National Climate Indicators</h4>
             <select name='city' id='city' class='select'>
               <option disabled>Please select a city</option>
+              <option value='46'>Atlanta, GA</option>
               <option value='71'>Anchorage, AK</option>
+              <option value='27'>Boston, MA</option>
               <option value='3'>Chicago, IL</option>
+              <option value='19'>Columbus, OH</option>
+              <option value='22'>Detroit, MI</option>
+              <option value='30'>Denver, CO</option>
+              <option value='6'>Houston, TX</option>
+              <option value='33'>Las Vegas, NV</option>
               <option value='16'>Los Angeles, CA</option>
               <option value='50'>Miami, FL</option>
+              <option value='37'>Nashville, TN</option>
               <option value='59'>New Orleans, LA</option>
               <option value='1' selected>New York City, NY</option>
+              <option value='9'>Phoenix, AZ</option>
+              <option value='284'>Portland, ME</option>
+              <option value='32'>Portland, OR</option>
               <option value='17'>San Francisco, CA</option>
+              <option value='28'>Seattle, WA</option>
+              <option value='29'>Washington DC</option>
             </select>
             <select name='indicator' id='indicator' class='select'>
               <option disabled>Please select an indicator</option>
@@ -79,15 +92,20 @@
           </div>
         </div>
         <div class='main-right'>
-          <div id='chart-container'></div>
+          <div id='chart-container'>
+            <div id='chart'></div>
+          </div>
           <div class='line-legend'>
-            <p>The <span class='blue'>blue line </span>represents a low emissions scenario - what will happen if emissions are significantly reduced.</p>
-            <p>The <span class='red'>red line </span>represents a high emissions scenario - what will happen if society continues on the 'business as usual' path.</p>
+            <div class='line-legend-item'>
+              <i class="fas fa-globe-americas"></i>
+              <p>The <span class='green'>green line</span> represents a low emissions scenario - what will happen if emissions are significantly reduced.</p>
+            </div>
+            <div class='line-legend-item'>
+              <i class="fas fa-globe-africa"></i>
+              <p>The <span class='blue'>blue line</span> represents a high emissions scenario - what will happen if society continues on the 'business as usual' path.</p>
+            </div>
           </div>
         </div>
-      </section>
-      <section class='info'>
-        <p></p>
       </section>
     </div>
 

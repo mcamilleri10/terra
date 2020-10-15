@@ -1,33 +1,34 @@
 import * as d3 from "d3";
-
+import { yAxisLabel } from './chart_axis_label';
 
 export default class Chart {
 
-  constructor(lowData, highData) {
+  constructor(lowData, highData, indicator) {
     this.lowData = lowData;
     this.highData = highData;
-    this.element = document.getElementById('chart-container');
+    this.indicator = indicator;
+    this.element = document.getElementById('chart');
     this.createChart();
   }
 
   createChart() {
     this.width = 650;
     this.height = 450;
-    this.margin = {top: 50, right: 75, bottom: 50, left: 30};
+    this.margin = {top: 20, right: 75, bottom: 50, left: 50};
 
     this.element.innerHTML = '';
-    const svg = d3.select(this.element)
+    this.svg = d3.select(this.element)
       .append('svg')
         .attr('width', this.width)
         .attr('height', this.height);
 
-    this.plot = svg.append('g')
+    this.plot = this.svg.append('g')
       .attr('transform', `translate(${this.margin.left}, ${this.margin.top})`);
 
     this.createScales();
     this.addAxes();
-    this.addLine(this.highData, 'red'); // SET TIMEOUT 5s?
-    this.addLine(this.lowData, 'rgb(0, 0, 99)');
+    this.addLine(this.lowData, 'green');
+    this.addLine(this.highData, 'rgb(0, 0, 99)');
   }
 
   createScales() {
@@ -61,12 +62,26 @@ export default class Chart {
     const yAxis = d3.axisLeft()
       .scale(this.yScale);
     this.plot.append('g')
-      .attr('class', 'x axis')
+      // .attr('class', 'x axis')
       .attr('transform', `translate(0, ${this.height - (margin.top + margin.bottom)})`)
       .call(xAxis);
+    this.svg.append('text')
+      .attr('class', 'x-axis')
+      .attr('x', this.width - 335)
+      .attr('y', this.height - 12)
+      .style('text-anchor', 'middle')
+      .text('Year');
     this.plot.append('g')
-      .attr('class', 'y axis')
+      // .attr('class', 'y axis')
       .call(yAxis);
+    this.svg.append('text')
+      .attr('class', 'y-axis')
+      .attr('transform', 'rotate(-90)')
+      .attr('x', this.width - 870)
+      .attr('y', this.height - 430)
+      .style('color', 'orange')
+      .style('text-anchor', 'middle')
+      .text(yAxisLabel(this.indicator));
   }
 
   addLine(data, color) {

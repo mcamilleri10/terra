@@ -4,7 +4,6 @@ export const changeIndicatorInfoText = indicator => {
   p.innerHTML = '';
   switch (indicator) {
     case 'loading':
-      // p.innerHTML = 'Loading...';
       p.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
       break;
     case 'average_high_temperature':
