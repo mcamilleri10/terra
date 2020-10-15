@@ -1,39 +1,6 @@
 import * as d3 from "d3";
 
 
-// const svg = d3.select('#chart-container')
-//   .append('svg')
-//     .attr('width', 650)
-//     .attr('height', 450)
-//     .append('g')
-//     .attr('transform', "translate(30, 50)");
-
-// export const createAreaChart = data => {
-  
-//   const x = d3.scaleTime()
-//     .domain([0, 150]) // years
-//     .range([0, 650]); // width
-//   svg.append('g')
-//     .attr('transform', "translate(0, 450)") // height
-//     .call(d3.axisBottom(x));
-
-//   const max = d3.max(data, d => d.avg);
-//   const y = d3.scaleLinear()
-//     .domain([0, max])
-//     .range([450, 0]); // height
-//   svg.append('g')
-//     .call(d3.axisLeft(y));
-
-//   svg.append('path')
-//     .datum(data)
-//     .attr('fill', '#0000ff')
-//     .attr('stroke', '#000')
-//     .attr('stroke-width', 2)
-//     .attr('d', d3.area()
-//       .x())
-
-// };
-
 export default class Chart {
 
   constructor(lowData, highData) {
@@ -71,8 +38,12 @@ export default class Chart {
     const min = d3.min(map);
     const margin = this.margin;
     const xExtent = [1950, 2100];
-    const yExtent = [min - min/20, max + max/20];
-    if (yExtent[0] < 0) yExtent[0] = 0;
+    let yExtent;
+    if (min >= 0) {
+      yExtent = [min - min/20, max + max/20];
+    } else {
+      yExtent = [min + min / 20, max + max / 20];
+    }
     this.xScale = d3.scaleLinear()
       .range([0, this.width - margin.right])
       .domain(xExtent);

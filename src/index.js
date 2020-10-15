@@ -5,7 +5,7 @@ import Chart from './scripts/chart';
 import * as d3 from "d3";
 
 
-new Chart([], []);
+new Chart([], []); 
 
 const form = document.querySelector('.form');
 const submit = document.querySelector('#submit');
@@ -35,16 +35,16 @@ form.addEventListener('submit', e => {
           Object.keys(res).forEach(key => {
             formatted45Data.push(Object.assign({}, {'year': key}, res[key]));
           });
-          console.log(formatted45Data);
-          console.log(d3.max(formatted45Data.map(d => d.avg)));
+          // console.log(formatted45Data);
+          // console.log(d3.max(formatted45Data.map(d => d.avg)));
           fetchAzaveaData(city, 'RCP85', indicator)
             .then(res => {
               Object.keys(res).forEach(key => {
                 formatted85Data.push(Object.assign({}, {'year': key}, res[key]));
               });
-              console.log(formatted85Data);
-              console.log(d3.max(formatted85Data.map(d => d.avg)));
-              console.log('done');
+              // console.log(formatted85Data);
+              // console.log(d3.max(formatted85Data.map(d => d.avg)));
+              // console.log('done');
               new Chart(formatted45Data, formatted85Data);
               changeIndicatorInfoText(indicator);
               setTimeout(() => submit.disabled = false, 5000);

@@ -66,8 +66,8 @@
               <option value='frost_days'>Frost Days</option>
               <option value='heat_wave_duration_index'>Heat Wave Duration Index</option>
               <option value='heat_wave_incidents'>Heat Wave Incidents</option>
-              <!-- <option value='max_high_temperature'>Max High Temperature</option> -->
-              <!-- <option value='min_low_temperature'>Min Low Temperature</option> -->
+              <option value='max_high_temperature'>Max High Temperature</option>
+              <option value='min_low_temperature'>Min Low Temperature</option>
               <option value='total_precipitation'>Total Precipitation</option>
             </select>
             <input type='submit' value='Submit' id='submit'>
@@ -80,8 +80,10 @@
         </div>
         <div class='main-right'>
           <div id='chart-container'></div>
-          <p>The <span class='blue'>blue line </span>represents a low emissions scenario - what will happen if emissions are significantly reduced.</p>
-          <p>The <span class='red'>red line </span>represents a high emissions scenario - what will happen if society continues on the 'business as usual' path.</p>
+          <div class='line-legend'>
+            <p>The <span class='blue'>blue line </span>represents a low emissions scenario - what will happen if emissions are significantly reduced.</p>
+            <p>The <span class='red'>red line </span>represents a high emissions scenario - what will happen if society continues on the 'business as usual' path.</p>
+          </div>
         </div>
       </section>
       <section class='info'>
