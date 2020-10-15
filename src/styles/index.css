@@ -223,3 +223,7 @@ body {
   color: rgb(0, 0, 99);
   font-weight: 600;
 }
+
+.main2 {
+  display: none;
+}
