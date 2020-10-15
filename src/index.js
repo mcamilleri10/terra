@@ -12,6 +12,10 @@ const submit = document.querySelector('#submit');
 let formatted45Data = [];
 let formatted85Data = [];
 
+document.addEventListener('DOMContentLoaded', () => {
+  fetchAndFormatData(1, 'average_high_temperature');
+});
+
 form.addEventListener('submit', e => {
   e.preventDefault();
   formatted45Data = [];
@@ -22,6 +26,10 @@ form.addEventListener('submit', e => {
     obj[key] = data.get(key);
   }
   const { city, indicator } = obj;
+  fetchAndFormatData(city, indicator);
+});
+
+const fetchAndFormatData = (city, indicator) => {
   changeIndicatorInfoText('loading');
   submit.disabled = true;
   fetchHistAzaveaData(city, indicator)
@@ -51,4 +59,4 @@ form.addEventListener('submit', e => {
             });
         });
     });
-});
+};
