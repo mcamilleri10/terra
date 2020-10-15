@@ -40,9 +40,9 @@
 
     <div class='main-container'>
       <h2>A Visualization of Past and Future Climate Data</h2>
-      <section class='main'>
-        <div class='main-left'>
-          <form class='form'>
+      <section class='main1'>
+        <div class='main1-left'>
+          <form class='form-nci'>
             <h4>National Climate Indicators</h4>
             <select name='city' id='city' class='select'>
               <option disabled>Please select a city</option>
@@ -53,6 +53,8 @@
               <option value='19'>Columbus, OH</option>
               <option value='22'>Detroit, MI</option>
               <option value='30'>Denver, CO</option>
+              <option value='1549'>Fairbanks, AK</option>
+              <option value='56'>Honolulu, HI</option>
               <option value='6'>Houston, TX</option>
               <option value='33'>Las Vegas, NV</option>
               <option value='16'>Los Angeles, CA</option>
@@ -91,20 +93,38 @@
             </p>
           </div>
         </div>
-        <div class='main-right'>
-          <div id='chart-container'>
-            <div id='chart'></div>
+        <div class='main1-right'>
+          <div class='line-chart-container'>
+            <div id='line-chart'></div>
           </div>
           <div class='line-legend'>
-            <div class='line-legend-item'>
+            <div class='line-legend-items'>
+              <div class='line-legend-item'>
+                <p>The <span class='green'>green line</span> represents a low emissions scenario - RCP4.5</p>
+              </div>
               <i class="fas fa-globe-americas"></i>
-              <p>The <span class='green'>green line</span> represents a low emissions scenario - what will happen if emissions are significantly reduced.</p>
+              <div class='line-legend-item'>
+                <p>The <span class='blue'>blue line</span> represents a high emissions scenario - RCP8.5</p>
+              </div>
             </div>
-            <div class='line-legend-item'>
-              <i class="fas fa-globe-africa"></i>
-              <p>The <span class='blue'>blue line</span> represents a high emissions scenario - what will happen if society continues on the 'business as usual' path.</p>
-            </div>
+            <p class='models-description'>
+              The Representative Concentration Pathway (RCP) is a greenhouse gas concentration trajectory adopted by the IPCC. <span class='green'>RCP4.5</span> describes a scenario in which emissions peak around the year 2040, resulting in a global temperature rise of 2 - 3&degC. <span class='blue'>RCP8.5</span> describes a scenario in which emissions continue to rise, resulting in a global temperature rise of 3 - 5&degC - considered a worst-case scenario.
+            </p>
           </div>
+        </div>
+      </section>
+
+      <section class='main2'>
+        <div class='main2-left'>
+          <div class='bar-chart-container'>
+            <div id='bar-chart'></div>
+          </div>
+        </div>
+        <div class='main2-right'>
+          <form class='form-iaq'>
+
+          </form>
+
         </div>
       </section>
     </div>

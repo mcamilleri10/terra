@@ -7,7 +7,7 @@ export default class Chart {
     this.lowData = lowData;
     this.highData = highData;
     this.indicator = indicator;
-    this.element = document.getElementById('chart');
+    this.element = document.getElementById('line-chart');
     this.createChart();
   }
 

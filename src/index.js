@@ -7,7 +7,7 @@ import * as d3 from "d3";
 
 new Chart([], []); 
 
-const form = document.querySelector('.form');
+const form = document.querySelector('.form-nci');
 const submit = document.querySelector('#submit');
 let formatted45Data = [];
 let formatted85Data = [];
