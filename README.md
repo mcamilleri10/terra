@@ -5,9 +5,7 @@ Climate is a climate change data visualization dashboard that allows users to ch
 #### Users can:
 * Search for and select a location
 * Select parameters (temp, precipitation, air quality, etc.)
-* Select time or range of time
 * View an interactive graph based on the results
-#### Bonus:
 * Google maps integration
 
 ## Architecture and Technologies
