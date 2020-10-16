@@ -18,7 +18,7 @@ Climate is a climate change data visualization dashboard that allows users to ch
 * Google Maps API
 
 ## Wireframes
-![wireframe](https://github.com/troubadour10/climate/blob/master/dist/images/wireframe.png)
+![wireframe](https://github.com/troubadour10/terra/blob/master/src/images/wireframe.png)
 
 ## Implementation Timeline
 * Day 1: Format incoming API data for use with D3 library
