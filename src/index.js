@@ -64,7 +64,7 @@ window.initMap = (lng, lat) => {
   if (typeof lat === 'undefined' || lat === 43.00035) lat = 40.736241;
   const mapContainer = document.querySelector("#map");
   map = new google.maps.Map(mapContainer, {
-    center: { lat: lat, lng: lng },
+    center: { lat, lng },
     zoom: 10,
     mapTypeId: google.maps.MapTypeId.SATELLITE,
     disableDefaultUI: true

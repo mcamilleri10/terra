@@ -11,11 +11,13 @@
       integrity="sha384-/feuykTegPRR7MxelAQ+2VUMibQwKyO6okSsWiblZAJhUSTF9QAVR0QLk6YwNURa" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/fontawesome.css"
       integrity="sha384-ijEtygNrZDKunAWYDdV3wAZWvTHSrGhdUfImfngIba35nhQ03lSNgfTJAKaGFjk2" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./src/styles/index.css" />
     <script src="./dist/main.js" defer></script>
-    
-    <title>Climate Change Dashboard</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfqn-KBaJfUe3pBwEGxvzCAcqfNRE41to&callback=initMap&libraries=&v=weekly"
+      defer></script>
+    <link rel="icon" type="image/jpg" href="./src//images/favicon.ico">
+    <title>Terra</title>
   </head>
 
   <body>
@@ -35,7 +37,6 @@
             <i class="fab fa-linkedin"></i>
             <!-- <span>LinkedIn</span> -->
           </a>
-          <span>Mark Camilleri</span>
         </div>
       </div>
     </header>
@@ -102,11 +103,11 @@
           <div class='line-legend'>
             <div class='line-legend-items'>
               <div class='line-legend-item'>
-                <p>The <span class='green'>green line</span> represents a low emissions scenario - RCP4.5</p>
+                <p>The <span class='blue'>blue line</span> represents a low emissions scenario - RCP4.5</p>
               </div>
               <i class="fas fa-globe-americas"></i>
               <div class='line-legend-item'>
-                <p>The <span class='blue'>blue line</span> represents a high emissions scenario - RCP8.5</p>
+                <p>The <span class='red'>red line</span> represents a high emissions scenario - RCP8.5</p>
               </div>
             </div>
             <div class='modal-open-container'>
@@ -126,8 +127,8 @@
     <div class='modal-overlay'>
       <div class='modal-content'>
         <p class='modal-close'>X</p>
-        The Representative Concentration Pathway (RCP) is a greenhouse gas concentration trajectory adopted by the IPCC. <span class='green'>RCP4.5</span> describes a scenario in which emissions peak around the year 2040, resulting in a global
-        temperature rise of 2 - 3&degC. <span class='blue'>RCP8.5</span> describes a scenario in which emissions continue to rise, resulting in a global temperature rise of 3 - 5&degC - considered a worst-case scenario.
+        The Representative Concentration Pathway (RCP) is a greenhouse gas concentration trajectory adopted by the IPCC. <span class='blue'>RCP4.5</span> describes a scenario in which emissions peak around the year 2040, resulting in a global
+        temperature rise of 2 - 3&degC. <span class='red'>RCP8.5</span> describes a scenario in which emissions continue to increase, resulting in a global temperature rise of 3 - 5&degC - considered a worst-case scenario.
       </div>
     </div>
 

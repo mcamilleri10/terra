@@ -4,7 +4,7 @@ export const changeIndicatorInfoText = indicator => {
   p.innerHTML = '';
   switch (indicator) {
     case 'loading':
-      p.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+      p.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i>';
       break;
     case 'average_high_temperature':
       p.innerHTML = 'Average High Temperature is calculated by aggregating daily average high   temperatures. It is an appropriate metric for probable long term temperature trends.';

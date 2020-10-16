@@ -27,8 +27,8 @@ export default class Chart {
 
     this.createScales();
     this.addAxes();
-    this.addLine(this.lowData, 'green');
-    this.addLine(this.highData, 'rgb(0, 0, 99)');
+    this.addLine(this.highData, 'rgb(190, 0, 0');
+    this.addLine(this.lowData, 'rgb(0, 0, 99');
   }
 
   createScales() {
