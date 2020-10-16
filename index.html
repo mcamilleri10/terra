@@ -14,6 +14,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./src/styles/index.css" />
     <script src="./dist/main.js" defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSZJcgq0pzwOE-DEIyig_akI3y2s1Wngw&callback=initMap&libraries=&v=weekly"
+      defer></script>
     <title>Climate Change Dashboard</title>
   </head>
 
@@ -57,7 +59,7 @@
               <option value='56'>Honolulu, HI</option>
               <option value='6'>Houston, TX</option>
               <option value='33'>Las Vegas, NV</option>
-              <option value='16'>Los Angeles, CA</option>
+              <option value='2'>Los Angeles, CA</option>
               <option value='50'>Miami, FL</option>
               <option value='37'>Nashville, TN</option>
               <option value='59'>New Orleans, LA</option>
@@ -115,15 +117,7 @@
       </section>
 
       <section class='main2'>
-        <div class='main2-left'>
-          <div class='bar-chart-container'>
-            <div id='bar-chart'></div>
-          </div>
-        </div>
-        <div class='main2-right'>
-          <form class='form-iaq'>
-
-          </form>
+        <div id='map'>
 
         </div>
       </section>

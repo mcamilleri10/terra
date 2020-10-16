@@ -61,11 +61,6 @@ body {
   margin: 0 auto;
 }
 
-.main2 {
-  margin-top: 30px;
-  margin-bottom: 50px;
-}
-
 .main-container h2 {
   margin: 0 auto;
   font-weight: 500;
@@ -73,7 +68,7 @@ body {
   margin-bottom: 15px;
 }
 
-.main1-left, .main2-right {
+.main1-left {
   background-color: rgba(235, 235, 235, .85);
   border: 1px solid black;
   border-radius: 5px;
@@ -104,7 +99,7 @@ body {
   margin-top: 39px;
 }
 
-.form-nci h4 {
+h4 {
   margin: 0 auto;
   margin-bottom: 5px;
   font-size: 18px;
@@ -225,5 +220,17 @@ body {
 }
 
 .main2 {
-  display: none;
+  margin-top: 15px;
+  margin-bottom: 50px;
+  height: 450px;
+  background-color: rgba(235, 235, 235, .85);
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid black;
 }

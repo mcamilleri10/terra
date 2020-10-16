@@ -1,11 +1,12 @@
 import "./styles/index.css";
 import { fetchAzaveaData, fetchHistAzaveaData } from "./scripts/fetch_util";
 import { changeIndicatorInfoText, indicatorError } from './scripts/indicator_info';
+// import { initMap } from './scripts/map';
 import Chart from './scripts/chart';
 import * as d3 from "d3";
 
 
-new Chart([], []); 
+// new Chart([], []); 
 
 const form = document.querySelector('.form-nci');
 const submit = document.querySelector('#submit');
@@ -14,6 +15,7 @@ let formatted85Data = [];
 
 document.addEventListener('DOMContentLoaded', () => {
   fetchAndFormatData(1, 'average_high_temperature');
+  // initMap();
 });
 
 form.addEventListener('submit', e => {
@@ -34,25 +36,22 @@ const fetchAndFormatData = (city, indicator) => {
   submit.disabled = true;
   fetchHistAzaveaData(city, indicator)
     .then(res => {
-      Object.keys(res).forEach(key => {
-        formatted45Data.push(Object.assign({}, { 'year': key }, res[key]));
-        formatted85Data.push(Object.assign({}, { 'year': key }, res[key]));
+      const coords = res.city.geometry.coordinates;
+      Object.keys(res.data).forEach(key => {
+        formatted45Data.push(Object.assign({}, { 'year': key }, res.data[key]));
+        formatted85Data.push(Object.assign({}, { 'year': key }, res.data[key]));
       });
       fetchAzaveaData(city, 'RCP45', indicator)
         .then(res => {
-          Object.keys(res).forEach(key => {
-            formatted45Data.push(Object.assign({}, {'year': key}, res[key]));
+          Object.keys(res.data).forEach(key => {
+            formatted45Data.push(Object.assign({}, {'year': key}, res.data[key]));
           });
-          // console.log(formatted45Data);
-          // console.log(d3.max(formatted45Data.map(d => d.avg)));
           fetchAzaveaData(city, 'RCP85', indicator)
             .then(res => {
-              Object.keys(res).forEach(key => {
-                formatted85Data.push(Object.assign({}, {'year': key}, res[key]));
+              Object.keys(res.data).forEach(key => {
+                formatted85Data.push(Object.assign({}, {'year': key}, res.data[key]));
               });
-              // console.log(formatted85Data);
-              // console.log(d3.max(formatted85Data.map(d => d.avg)));
-              // console.log('done');
+              initMap(coords[0], coords[1]);
               new Chart(formatted45Data, formatted85Data, indicator);
               changeIndicatorInfoText(indicator);
               setTimeout(() => submit.disabled = false, 5000);
@@ -60,3 +59,16 @@ const fetchAndFormatData = (city, indicator) => {
         });
     });
 };
+
+let map;
+window.initMap = (lng, lat) => {
+  if (typeof lng === 'undefined' || lng === -75.4999) lng = -73.990286;
+  if (typeof lat === 'undefined' || lat === 43.00035) lat = 40.736241;
+  const mapContainer = document.querySelector("#map");
+  map = new google.maps.Map(mapContainer, {
+    center: { lat: lat, lng: lng },
+    zoom: 10
+  });
+};
+
+// -73.990286 40.736241

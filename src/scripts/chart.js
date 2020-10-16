@@ -62,7 +62,6 @@ export default class Chart {
     const yAxis = d3.axisLeft()
       .scale(this.yScale);
     this.plot.append('g')
-      // .attr('class', 'x axis')
       .attr('transform', `translate(0, ${this.height - (margin.top + margin.bottom)})`)
       .call(xAxis);
     this.svg.append('text')
@@ -72,7 +71,6 @@ export default class Chart {
       .style('text-anchor', 'middle')
       .text('Year');
     this.plot.append('g')
-      // .attr('class', 'y axis')
       .call(yAxis);
     this.svg.append('text')
       .attr('class', 'y-axis')
@@ -85,7 +83,9 @@ export default class Chart {
   }
 
   addLine(data, color) {
-    let avg = data.map(d => d.avg);
+    let avg = data.map(d => {
+      d.avg;
+    });
     if (avg < 0) avg = 0;
     const line = d3.line()
       .x(d => this.xScale(d.year))
