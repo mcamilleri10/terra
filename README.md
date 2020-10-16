@@ -9,9 +9,9 @@ Climate is a climate change data visualization dashboard that allows users to ch
 * Google maps integration
 
 ## Architecture and Technologies
-* Javascript
-* Webpack
+* JavaScript
 * D3
+* Webpack
 * Azavea Climate API
 * Google Maps API
 
