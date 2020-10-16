@@ -1,5 +1,5 @@
 ## Background
-Climate is a climate change data visualization dashboard that allows users to change time, location, and paramaters, and view data on interactive charts and graphs. 
+Terra is a climate change data visualization dashboard that allows users to select a location & indicator, and view data on interactive charts and graphs. 
 
 ## Functionality and MVP
 #### Users can:
