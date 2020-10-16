@@ -15,7 +15,7 @@ Climate is a climate change data visualization dashboard that allows users to ch
 * Webpack
 * D3
 * Azavea Climate API
-* IQAir AirVisual API
+* Google Maps API
 
 ## Wireframes
 ![wireframe](https://github.com/troubadour10/climate/blob/master/dist/images/wireframe.png)
