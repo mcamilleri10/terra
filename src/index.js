@@ -1,21 +1,18 @@
 import "./styles/index.css";
 import { fetchAzaveaData, fetchHistAzaveaData } from "./scripts/fetch_util";
-import { changeIndicatorInfoText, indicatorError } from './scripts/indicator_info';
-// import { initMap } from './scripts/map';
+import { changeIndicatorInfoText } from './scripts/indicator_info';
 import Chart from './scripts/chart';
-import * as d3 from "d3";
 
 
-// new Chart([], []); 
 
 const form = document.querySelector('.form-nci');
 const submit = document.querySelector('#submit');
 let formatted45Data = [];
 let formatted85Data = [];
 
+// create chart on initial load
 document.addEventListener('DOMContentLoaded', () => {
   fetchAndFormatData(1, 'average_high_temperature');
-  // initMap();
 });
 
 form.addEventListener('submit', e => {
@@ -60,6 +57,7 @@ const fetchAndFormatData = (city, indicator) => {
     });
 };
 
+// google map
 let map;
 window.initMap = (lng, lat) => {
   if (typeof lng === 'undefined' || lng === -75.4999) lng = -73.990286;
@@ -67,8 +65,25 @@ window.initMap = (lng, lat) => {
   const mapContainer = document.querySelector("#map");
   map = new google.maps.Map(mapContainer, {
     center: { lat: lat, lng: lng },
-    zoom: 10
+    zoom: 10,
+    mapTypeId: google.maps.MapTypeId.SATELLITE,
+    disableDefaultUI: true
   });
 };
 
-// -73.990286 40.736241
+// modal
+const btn = document.querySelector('.modal-open-container');
+const modalOverlay = document.querySelector('.modal-overlay');
+const close = document.querySelector('.modal-close');
+
+btn.addEventListener('click', () => {
+  modalOverlay.style.display = 'block';
+});
+
+close.addEventListener('click', () => {
+  modalOverlay.style.display = 'none';
+});
+
+window.addEventListener('click', e => {
+  if (e.target === modalOverlay) modalOverlay.style.display = 'none';
+});

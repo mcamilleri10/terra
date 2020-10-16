@@ -14,8 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./src/styles/index.css" />
     <script src="./dist/main.js" defer></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSZJcgq0pzwOE-DEIyig_akI3y2s1Wngw&callback=initMap&libraries=&v=weekly"
-      defer></script>
+    
     <title>Climate Change Dashboard</title>
   </head>
 
@@ -25,7 +24,7 @@
       <div class='header-content'>
         <div class='title'>
           <!-- <i class="fas fa-globe-americas"></i> -->
-          <h1>Climate Change</h1>
+          <h1>Terra</h1>
         </div>
         <div class='personal-links'>
           <a href='https://github.com/troubadour10'>
@@ -36,6 +35,7 @@
             <i class="fab fa-linkedin"></i>
             <!-- <span>LinkedIn</span> -->
           </a>
+          <span>Mark Camilleri</span>
         </div>
       </div>
     </header>
@@ -109,20 +109,27 @@
                 <p>The <span class='blue'>blue line</span> represents a high emissions scenario - RCP8.5</p>
               </div>
             </div>
-            <p class='models-description'>
-              The Representative Concentration Pathway (RCP) is a greenhouse gas concentration trajectory adopted by the IPCC. <span class='green'>RCP4.5</span> describes a scenario in which emissions peak around the year 2040, resulting in a global temperature rise of 2 - 3&degC. <span class='blue'>RCP8.5</span> describes a scenario in which emissions continue to rise, resulting in a global temperature rise of 3 - 5&degC - considered a worst-case scenario.
-            </p>
+            <div class='modal-open-container'>
+              <div class='info-icon-bg'>
+                <i class="fas fa-info"></i>
+              </div>
+              <button class='modal-open'>Learn More</button>
+            </div>
           </div>
         </div>
       </section>
 
       <section class='main2'>
-        <div id='map'>
-
-        </div>
-      </section>
+        <div id='map'></div>
+      </div>
+    </section>
+    <div class='modal-overlay'>
+      <div class='modal-content'>
+        <p class='modal-close'>X</p>
+        The Representative Concentration Pathway (RCP) is a greenhouse gas concentration trajectory adopted by the IPCC. <span class='green'>RCP4.5</span> describes a scenario in which emissions peak around the year 2040, resulting in a global
+        temperature rise of 2 - 3&degC. <span class='blue'>RCP8.5</span> describes a scenario in which emissions continue to rise, resulting in a global temperature rise of 3 - 5&degC - considered a worst-case scenario.
+      </div>
     </div>
-
 
     <!-- background image courtesy of NASA / unsplash.com -->
   </body>

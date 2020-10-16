@@ -1,5 +1,6 @@
+/* reset */
 body {
-  height: 100vh;
+  height: auto;
   background-color: rgb(236, 235, 235);
   color: black;
   margin: 0;
@@ -10,6 +11,7 @@ body {
   cursor: default;
 }
 
+/* content */
 .main-container {
   display: flex;
   flex-direction: column;
@@ -17,6 +19,7 @@ body {
   margin: 0 auto;
 }
 
+/* header */
 .header {
   height: 80px;
   line-height: 80px;
@@ -41,7 +44,7 @@ body {
   margin: 0;
 }
 
-.header a {
+.personal-links a {
   color: white;
   font-weight: 500;
   text-decoration: none;
@@ -49,10 +52,15 @@ body {
   font-size: 20px;
 }
 
-.header a:hover {
+.personal-links span {
+  margin-left: 10px;
+}
+
+.personal-links a:hover {
   color: rgb(235, 235, 235);
 }
 
+/* main content */
 .main1, .main2 {
   display: flex;
   justify-content: space-between;
@@ -83,14 +91,15 @@ body {
   cursor: default;
 }
 
+/* form */
 .indicator-info-container {
   width: 250px;
   cursor: default;
   font-size: 15px;
   text-align: center;
 }
-
-.form-nci, .form-iaq {
+ 
+.form-nci {
   display: flex;
   flex-direction: column;
   width: 250px;
@@ -145,6 +154,7 @@ h4 {
   color: rgb(0, 0, 99);
 }
 
+/* chart */
 .line {
   stroke-width: 2px;
 }
@@ -167,7 +177,7 @@ h4 {
   padding: 10px;
   border: 1px solid black;
   border-radius: 5px;
-  margin-top: 15px;
+  margin-top: 13px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -179,6 +189,7 @@ h4 {
   width: 575px;
   margin: 0 auto;
   text-align: justify;
+  border-bottom: 1px solid black;
 }
 
 .line-legend-item {
@@ -187,7 +198,8 @@ h4 {
 }
 
 .fa-globe-americas {
-  margin-top: 20px;
+  margin-top: 15px;
+  font-size: 25px;
 }
 
 .line-legend-item p {
@@ -200,15 +212,6 @@ h4 {
   text-align: right;
 }
 
-.models-description {
-  width: 575px;
-  margin: 0 auto 10px auto;
-  padding-top: 10px;
-  text-align: justify;
-  font-size: 14px;
-  border-top: 1px solid black;
-}
-
 .green {
   color: green;
   font-weight: 600;
@@ -219,8 +222,9 @@ h4 {
   font-weight: 600;
 }
 
+/* map */
 .main2 {
-  margin-top: 15px;
+  margin-top: 13px;
   margin-bottom: 50px;
   height: 450px;
   background-color: rgba(235, 235, 235, .85);
@@ -233,4 +237,83 @@ h4 {
   width: 100%;
   border-radius: 5px;
   border: 1px solid black;
+}
+
+/* modal */
+.modal-open-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto 0 auto;
+  font-size: 14px;
+  width: 96px;
+  cursor: pointer;
+}
+
+.info-icon-bg {
+  border: 1px solid black;
+  height: 14px;
+  width: 14px;
+  text-align: center;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -1px;
+}
+
+.fa-info {
+  display: inline-block;
+  font-size: 9px;
+}
+
+.modal-open {
+  font-family: inherit;
+  outline: none;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+}
+
+.modal-open-container:hover .modal-open, .modal-open-container:hover .info-icon-bg {
+  color: rgb(136, 136, 136);
+  border-color: rgb(136, 136, 136);
+}
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, .8);
+  z-index: 2;
+}
+
+.modal-content {
+  height: 150px;
+  width: 700px;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  margin-left: -400px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: rgba(235, 235, 235, .9);
+  padding: 25px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.modal-close {
+  text-align: right;
+  margin-top: 0;
+  margin-right: 15px;
+}
+
+.modal-close:hover {
+  cursor: pointer;
+  color: rgb(136, 136, 136);
 }
