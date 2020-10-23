@@ -1,25 +1,26 @@
-## Background
-Terra is a climate change data visualization dashboard that allows users to select a location & indicator, and view data on interactive charts and graphs. 
+## Intro
+Terra is a climate data educational tool that uses multiple statistical models to view visualize how different level of emissions will impact the climate in a particular location. Users can select both the location and a climate indicator (avg high temps, total precipitation, etc.), and view an animated and dynamic chart of historical data beginning in 1950, and multiple models of future data until 2100.
 
-## Functionality and MVP
-#### Users can:
-* Search for and select a location
-* Select parameters (temp, precipitation, air quality, etc.)
-* View an interactive graph based on the results
-* Google maps integration
-
-## Architecture and Technologies
+### Technologies Used in Building Terra
 * JavaScript
-* D3
+* D3.js
 * Webpack
-* Azavea Climate API
-* Google Maps API
+* Babel
+* HTML5
+* CSS3
 
-## Wireframes
-![wireframe](https://github.com/troubadour10/terra/blob/master/src/images/wireframe.png)
+### APIs and Third Party Resources
+* Azavea Climate API (Climate Data)
+* Google Maps API (Maps Data)
+* Font Awesome (Icons)
+* Unsplash (Background Image)
 
-## Implementation Timeline
-* Day 1: Format incoming API data for use with D3 library
-* Day 2: Format and style graphs with D3
-* Day 3: Create user inputs for customizing paramters and graphs
-* Day 4: Finish any styling and implement Google Maps (bonus)
+## Features
+### User Selected Parameters
+Users are able to select both a location and climate indicator to view a customized animated line chart.
+![form](https://github.com/troubadour10/terra/blob/gh-pages/src/images/form-screenshot.png "Form")
+### Animated Line Chart
+Utilizing D3.js, an animated line chart is rendered based on the user selected inputs.
+![chart](https://media.giphy.com/media/XPOyA8lErOeWDlLABj/giphy.gif)
+### Google Maps Integration
+Upon user selection, an embedded map travels to the chosen location.
