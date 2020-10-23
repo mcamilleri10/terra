@@ -1,9 +1,9 @@
 export const yAxisLabel = indicator => {
   switch (indicator) {
     case 'average_high_temperature':
-      return 'Avg High Temperature';
+      return 'Avg High Temperature °F';
     case 'average_low_temperature':
-      return 'Avg Low Temperature';
+      return 'Avg Low Temperature °F';
     case 'total_precipitation':
       return 'Total Precipitation';
     case 'extreme_precipitation_events':
@@ -23,9 +23,9 @@ export const yAxisLabel = indicator => {
     case 'frost_days':
       return 'Frost Days';
     case 'max_high_temperature':
-      return 'Max High Temperature';
+      return 'Max High Temperature °F';
     case 'min_low_temperature':
-      return 'Min Low Temperature';
+      return 'Min Low Temperature °F';
     default:
       break;
   }
